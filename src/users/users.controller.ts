@@ -6,6 +6,7 @@
 import {
   Body,
   Controller,
+  DefaultValuePipe,
   Delete,
   Get,
   Param,
@@ -26,8 +27,8 @@ export class UsersController {
   @Get('/:id')
   public getUserById(
     @Param('id', ParseIntPipe) id: number,
-    @Query('limit', ParseIntPipe) limit?: number,
-    @Query('ofset', ParseIntPipe) ofset?: number,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit?: number,
+    @Query('ofset', new DefaultValuePipe(1), ParseIntPipe) ofset?: number,
     @Query('role') role?: string,
   ) {
     console.log('----id:', typeof id);
