@@ -18,6 +18,7 @@ import {
   Headers,
   Ip,
   ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/user.dto';
 
@@ -46,7 +47,8 @@ export class UsersController {
   // @Req => lay toan bo: body, header,cookies, ...
   @Post()
   public createUser(
-    @Body(new ValidationPipe()) request: CreateUserDto,
+    @Body()
+    request: CreateUserDto,
     @Headers() headers: any,
     @Ip() ip: any,
   ) {
