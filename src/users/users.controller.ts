@@ -21,6 +21,7 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { CreateUserDto, GetParamsUserDto } from './dtos/user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -64,8 +65,8 @@ export class UsersController {
   }
 
   @Patch()
-  public updateuser_v2() {
-    return 'You sent a PATCH request to update user';
+  public pathUser(@Body() body: UpdateUserDto) {
+    return body;
   }
 
   @Delete()
