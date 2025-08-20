@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
+import { Type } from 'class-transformer';
 import {
   IsString,
   IsNotEmpty,
@@ -7,6 +7,7 @@ import {
   MaxLength,
   IsEmail,
   Matches,
+  IsInt,
 } from 'class-validator';
 export class CreateUserDto {
   @IsString()
@@ -33,4 +34,11 @@ export class CreateUserDto {
     message: 'Password không phù hợp',
   })
   password: string;
+}
+
+export class GetParamsUserDto {
+  @IsOptional()
+  @IsInt()
+  @Type(() => Number)
+  id?: number;
 }

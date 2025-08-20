@@ -20,7 +20,7 @@ import {
   ValidationPipe,
   UsePipes,
 } from '@nestjs/common';
-import { CreateUserDto } from './dtos/user.dto';
+import { CreateUserDto, GetParamsUserDto } from './dtos/user.dto';
 
 @Controller('users')
 export class UsersController {
@@ -31,16 +31,16 @@ export class UsersController {
 
   @Get('/:id')
   public getUserById(
-    @Param('id', ParseIntPipe) id: number,
-    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit?: number,
-    @Query('ofset', new DefaultValuePipe(1), ParseIntPipe) ofset?: number,
-    @Query('role') role?: string,
+    @Param() params: GetParamsUserDto,
+    // @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit?: number,
+    // @Query('ofset', new DefaultValuePipe(1), ParseIntPipe) ofset?: number,
+    // @Query('role') role?: string,
   ) {
-    console.log('----id:', typeof id);
-    console.log('----limit:', limit);
-    console.log('----ofset:', ofset);
-    console.log('----role:', role);
-    return 'You sent a GET request to get user detail by id: ' + id;
+    console.log('----params:', params);
+    // console.log('----limit:', limit);
+    // console.log('----ofset:', ofset);
+    // console.log('----role:', role);
+    return 'You sent a GET request to get user detail by id: ' + params?.id;
   }
 
   //@Body => lây đu thong tin can
