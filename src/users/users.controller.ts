@@ -49,12 +49,12 @@ export class UsersController {
   public createUser(
     @Body()
     request: CreateUserDto,
-    @Headers() headers: any,
-    @Ip() ip: any,
+    // @Headers() headers: any,
+    // @Ip() ip: any,
   ) {
     console.log('----request', request);
-    console.log('----headers', headers);
-    console.log('----ip', ip);
+    console.log('----request', typeof request);
+    console.log('---instance of', request instanceof CreateUserDto);
     return 'You sent a Post request to create new user';
   }
 
